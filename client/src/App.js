@@ -3,6 +3,7 @@ import FileUpload from './components/FileUpload';
 import ProgressIndicator from './components/ProgressIndicator';
 import ResultsDisplay from './components/ResultsDisplay';
 
+
 function App() {
   const [uploadStatus, setUploadStatus] = useState('idle');
   const [results, setResults] = useState(null);
@@ -15,7 +16,7 @@ function App() {
     }
 
     try {
-      const response = await fetch('/api/upload', {
+      const response = await fetch('http://localhost:3001/api/upload', {
         method: 'POST',
         body: formData,
       });
@@ -30,7 +31,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Galadriel RAG File Uploader</h1>
+      <h1>RAG File Uploader</h1>
       <FileUpload onFileUpload={handleFileUpload} />
       <ProgressIndicator status={uploadStatus} />
       {results && <ResultsDisplay results={results} />}
